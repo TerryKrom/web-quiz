@@ -169,10 +169,10 @@ reset = () => {
 gameover = () => {
     clearInterval(relogio())
     timer.style.display="none"
-    content.innerHTML=`
+content.innerHTML=`
     <h2 class="gameover" align="center">GAME OVER</h2>
     <button class="start" onclick="reset()">Reiniciar</button>`
-    content.style.marginTop="11.7px"
+content.style.marginTop="11.7px"
 }
 
 let vida = [l1,l2,l3]
