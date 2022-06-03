@@ -73,11 +73,19 @@ const perguntas = [
     },
     {
         id: 10,
-        enunciado: `O elemento Bário <span style="font-size: 10pt">56</span>Ba<span style="font-size: 10pt">137</span> pertence a qual grupo da tabela periódica?`,
+        enunciado: `O elemento Bário <span style="font-size: 10pt">56</span>Ba<span style="font-size: 10pt">137</span> pertence a qual família da tabela periódica?`,
         re1: "Gases Nobres",
         re2: "Metais de Transição",
         re3: "Nâo Metais",
         rc: "Metais Alcalino-Terrosos"
+    },
+    {
+        id:11,
+        enunciado: 'Qual o maior elemento da tabela periódica?',
+        re1:'Bário (ba)',
+        re2:'Hidrogênio (H)',
+        re3:'Litio (Li)',
+        rc:'Frâncio (fr)'
     }
     
 ]
@@ -110,7 +118,7 @@ let chp = 3;
 let cp = 1;
 exibirPergunta = () => {
     mainS.play()
-    relogio()
+    //relogio()
     hp.style.display="block"
     let cont = 0;
     a_start.play()
@@ -169,6 +177,7 @@ reset = () => {
 gameover = () => {
     clearInterval(relogio())
     timer.style.display="none"
+    hp.style.display="none"
 content.innerHTML=`
     <h2 class="gameover" align="center">GAME OVER</h2>
     <button class="start" onclick="reset()">Reiniciar</button>`
