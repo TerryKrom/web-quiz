@@ -197,5 +197,5 @@ relogio = () => {
             clearInterval(start)
             timer.innerHTML=" "
         }
-    },1000)
+    },1500)
 }
