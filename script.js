@@ -167,7 +167,6 @@ reset = () => {
     location.reload()
 }
 gameover = () => {
-    window.alert('Game Over!')
     clearInterval(relogio())
     timer.style.display="none"
     content.innerHTML=`
