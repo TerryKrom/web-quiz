@@ -4,18 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz de Quimica</title>
+    <title>Quiz - Urbanização</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <!--Musicas e Sfx-->
-    <audio src="start.mp3" id="a_start"></audio>
-    <audio src="hit.mp3" id="hit"></audio>
-    <audio src="miss.mp3" id="miss"></audio>
-    <audio src="gameover.mp3" id="g-over"></audio>
-    <audio src="main-song.mp3" loop id="main-song"></audio>
-    <div class="clock" id="clock" align="left"><h2 id="time">Tempo: </h2></div>
     <section>
     <div class="life">
         <ul id="hp">
@@ -24,33 +17,19 @@
             <li id="l3"> &#x2764;&#xFE0F; </li>
         </ul>
     </div>
-    <div class="audio">
-        <button id="play">&#x1F50A;</button> <br>
-        <button id="pause">&#x1F507;</button>
-    </div>
     
     <div class="content" id="content">
-       <h2 align="center" class="title" id="title">&#x1F9EA; Química - Quiz &#x1F9EA; </h2>
-       <div class="quest" id="quest">
-       </div>
-       <div class="answer" id="answer">
+        <div class="center">
+            <h2 class="title" id="">Quiz - Urbanização</h2>
+            <h2 class="title" id="title">Quiz - Urbanização</h2>
+           <div class="quest" id="quest"></div>
            <ol id="ans"></ol>
-       </div>
+        </div>
     </div>
     
     </section>
-    <script>
-        let song = document.getElementById('main-song')
-        let play = document.getElementById('play')
-        let pause = document.getElementById('pause')
-        play.addEventListener("click",function(){
-            song.play()
-        })
-        pause.addEventListener("click", function(){
-            song.pause()
-        })
-    </script>
-     <footer>
+
+    <footer>
         <p>Made by <span>BODY ENERGY</span> &copy;</p>
     </footer>
 </body>
