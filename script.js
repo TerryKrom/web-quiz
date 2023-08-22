@@ -89,12 +89,14 @@ const perguntas = [
     }
     
 ]
+
+
 let pergunta;
-let contp = 0
+
+let contp = 0;
 
 sortearPergunta = () => {
     pergunta = perguntas[contp]
-    //console.log(pergunta)
 }
 
 let content = document.getElementById('content')
@@ -110,18 +112,14 @@ let l1 = document.getElementById('l1')
 let l2 = document.getElementById('l2')
 let l3 = document.getElementById('l3')
 
-let hit = document.getElementById('hit')
-let miss = document.getElementById('miss')
-let mainS = document.getElementById('main-song')
-let game_over = document.getElementById('g-over')
 let chp = 3;
 let cp = 1;
+
+
 exibirPergunta = () => {
-    mainS.play()
     //relogio()
     hp.style.display="block"
     let cont = 0;
-    a_start.play()
     sortearPergunta()
     quest.innerHTML= `<h3 class="pergunta">`+pergunta.enunciado+`</h3>`
     const respostas = [pergunta.re1,
@@ -133,7 +131,8 @@ exibirPergunta = () => {
         let cont = c
         ans.innerHTML+=`<li class="btn-r" onclick="validar(`+cont+`)">`+respostas[cont]+`</li>`
     }
-    title.innerHTML=`Questão: `+cp+`&nbsp; &nbsp; &#x1F9EA; Química - Quiz &#x1F9EA;`
+    title.style.display="block"
+    title.innerHTML=`Questão: `+cp+``
     resp = respostas;
 }
 quest.innerHTML=`<button class="start" onclick="exibirPergunta()">Play</button>`
@@ -142,7 +141,6 @@ let resp = [];
 validar = (p) => {
     let t = resp.indexOf(pergunta.rc)
     if(p == t){
-        hit.play()
         window.alert('Parabéns! Você acertou!')
         contp++
         cp++
@@ -160,20 +158,21 @@ validar = (p) => {
             <button class="start" onclick="reset()">Voltar</button>`
         }
     }else{
-        miss.play()
         window.alert('Que pena! Você errou!')
         tiravida()
         chp--
         if(chp == 0){
-            mainS.pause()
-            game_over.play()
             gameover()
         }
     }
 }
+
+
 reset = () => {
     location.reload()
 }
+
+
 gameover = () => {
     clearInterval(relogio())
     timer.style.display="none"
@@ -187,24 +186,4 @@ content.style.marginTop="11.7px"
 let vida = [l1,l2,l3]
 tiravida = () => {
     vida[chp-1].style.display="none"
-}
-//console.log(perguntas[0].rc)
-let timer = document.getElementById('time')
-let start;
-let Rsec;
-relogio = () => {
-    let clock = document.getElementById('clock')
-    clock.style.display="block"
-    content.style.marginTop="0"
-    Rsec = 20;
-    timer.innerHTML=`Tempo: `+Rsec+``
-    start = setInterval(function(){
-        Rsec--
-        timer.innerHTML=`Tempo: `+Rsec+``
-        if(Rsec == 0){
-            gameover()
-            clearInterval(start)
-            timer.innerHTML=" "
-        }
-    },1500)
 }
