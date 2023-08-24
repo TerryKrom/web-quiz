@@ -5,6 +5,7 @@
     margin: 0;
     padding: 0;
     font-family: "Outfit";
+    transition: 0.3s linear;
 }
 
 body{
@@ -16,8 +17,8 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 150px auto;
-    width: 70vw;
+    margin: 0 auto;
+    width: 50vw;
     height: 70vh;
     border-radius: 10px;
     flex-direction: column;
@@ -31,6 +32,44 @@ body{
     width: 90%;
     height: 200px;
     list-style: none;
+}
+
+.quest{
+    width: 90%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#header-title{
+    font-size: 1.8rem;
+}
+
+.header-title-open{
+    animation: width_extends 0.4s linear;
+    width: 90%;
+}
+
+@keyframes width_extends{
+    0%{
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+    25%{
+        opacity: 0.25;
+        transform: translateY(-20px);
+    }
+    50%{
+        opacity: 0.50;
+        transform: translateY(15px);
+    }
+    75%{
+        opacity: 0.75;
+        transform: translateY(5px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
 .nome::placeholder{
@@ -62,7 +101,7 @@ footer{
     border-radius: 5px;
 }
 
-#ans li:hover{
+#ans li:hover, .start:hover{
      opacity: 0.9;
 }
 
@@ -79,16 +118,22 @@ footer{
 }
 
 #hp{
-    list-style: none;
     display:none;
+    justify-content: center;
+    align-items: center;
 }
 
 .life{
-    float:left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    margin: 100px auto 0px auto;
 }
 
-.life li{
+#hp div {
     animation: life 0.4s ease-in-out infinite alternate;
+    font-size: 1.7rem;
 }
 
 @keyframes life{
@@ -108,10 +153,6 @@ footer{
 .title{
     font-weight: 300;
     
-}
-.pergunta{
-    width: 90%;
-    margin: 0 auto;
 }
 
 .gameover{
@@ -136,6 +177,5 @@ footer{
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
-    border: 2px solid #252525;
     border-radius: 10px;
 }

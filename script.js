@@ -1,101 +1,91 @@
 const perguntas = [
     {
         id: 1,
-        enunciado: `"O átomo é como uma bola de bilhar." Quem fez essa afirmação?`,
-        re1: "Thomsom",
-        re2: "Rutherford",
-        re3: "Bohr",
-        rc: "Dalton",
+        enunciado: "Qual é o processo de crescimento da população urbana em relação à população rural?",
+        re1: "Migração",
+        re2: "Expansão agrícola",
+        re3: "Revolução industrial",
+        rc: "Urbanização",
     },
     {
         id: 2,
-        enunciado: `Qual cientista criou o modelo atômico denominado "Pudim de Passas"?`,
-        re1: "Dalton",
-        re2: "Goldstein",
-        re3: "Rutherford",
-        rc: "Thomsom",
+        enunciado: "O que é êxodo rural?",
+        re1: "Migração de áreas urbanas para áreas rurais",
+        re2: "Crescimento da população rural",
+        re3: "Desenvolvimento industrial",
+        rc: "Migração de áreas rurais para áreas urbanas",
     },
     {
         id: 3,
-        enunciado:`O elemento <span style="font-size: 10pt">11</span>Na<span style="font-size: 8pt">23</span> possui quantos prótons?`,
-        re1: "14",
-        re2: "12",
-        re3: "23",
-        rc: "11",
+        enunciado: "Quais são os principais fatores que impulsionam a urbanização?",
+        re1: "Agricultura tradicional",
+        re2: "Tecnologias agrícolas",
+        re3: "Manutenção de tradições rurais",
+        rc: "Industrialização e modernização",
     },
     {
         id: 4,
-        enunciado:`Quantas camadas possúi a <span style="font-weight: bold;">Eletrosfera?</span`,
-        re1: "4",
-        re2: "5",
-        re3: "10",
-        rc: "7",
+        enunciado: "Qual é a definição de aglomeração urbana?",
+        re1: "Áreas de grande produção agrícola",
+        re2: "Cidades de pequeno porte",
+        re3: "Concentração de atividades rurais",
+        rc: "Conjunto de cidades próximas que se interligam funcionalmente",
     },
     {
         id: 5,
-        enunciado:`Quais os subníveis da <span style="font-weight: bold">Eletrosfera?</span`,
-        re1: "A B C D",
-        re2: "Z P E N",
-        re3: "S P D G",
-        rc: "S P D F",
+        enunciado: "O que é o processo de suburbanização?",
+        re1: "Desenvolvimento de atividades rurais",
+        re2: "Crescimento populacional nas áreas centrais",
+        re3: "Expansão das áreas urbanas em direção ao centro",
+        rc: "Expansão das áreas urbanas para as regiões periféricas",
     },
     {
         id: 6,
-        enunciado:`Quais as letras que representam as camadas da <span style="font-weight: bold">Eletrosfera?</span`,
-        re1: "A B C D E F G",
-        re2: "T U V W X Y Z",
-        re3: "S P D F O Q",
-        rc: "K L M N O P Q",
+        enunciado: "Qual é a principal consequência da urbanização descontrolada?",
+        re1: "Preservação do meio ambiente",
+        re2: "Aumento da população rural",
+        re3: "Expansão da agricultura",
+        rc: "Problemas de infraestrutura e degradação ambiental",
     },
     {
         id: 7,
-        enunciado: `Quem criou a tabela periódica?`,
-        re1: "John Dalton",
-        re2: "Antoine Lavoisier",
-        re3: "Theodore Seaborg",
-        rc: "Dimitri Mendeleiev"
+        enunciado: "O que são megacidades?",
+        re1: "Cidades com baixa densidade populacional",
+        re2: "Pequenas vilas rurais",
+        re3: "Cidades médias em crescimento",
+        rc: "Cidades com mais de 10 milhões de habitantes",
     },
     {
         id: 8,
-        enunciado: `O primeiro grupo da tabela periódica é o grupo dos:`,
-        re1: "Gases Nobres",
-        re2: "Não metais",
-        re3: "Halogênios",
-        rc: "Metais Alcalinos"
+        enunciado: "Quais são os desafios enfrentados pelas cidades no contexto da urbanização?",
+        re1: "Baixa demanda por serviços",
+        re2: "Falta de infraestrutura nas áreas rurais",
+        re3: "Desenvolvimento agrícola",
+        rc: "Trânsito congestionado, moradia precária, poluição, entre outros",
     },
     {
         id: 9,
-        enunciado: `Quais os únicos elementos da tabela periódica que podem ser encontrados na natureza de forna isolada?`,
-        re1: "Metais Alcalinos",
-        re2: "Metais Alcalino-Terrosos",
-        re3: "Não metais",
-        rc: "Gases Nobres (Exceto o Hélio)"
+        enunciado: "O que é o processo de gentrificação?",
+        re1: "Migração de áreas urbanas para áreas rurais",
+        re2: "Expansão das áreas industriais",
+        re3: "Aumento da população rural",
+        rc: "Transformação de bairros antes degradados em áreas de classe alta",
     },
     {
         id: 10,
-        enunciado: `O elemento Bário <span style="font-size: 10pt">56</span>Ba<span style="font-size: 10pt">137</span> pertence a qual família da tabela periódica?`,
-        re1: "Gases Nobres",
-        re2: "Metais de Transição",
-        re3: "Nâo Metais",
-        rc: "Metais Alcalino-Terrosos"
+        enunciado: "Qual é o termo utilizado para descrever o crescimento desordenado das cidades?",
+        re1: "Desenvolvimento sustentável",
+        re2: "Ruralização",
+        re3: "Expansão planejada",
+        rc: "Urbanização caótica",
     },
-    {
-        id:11,
-        enunciado: 'Qual o maior elemento da tabela periódica?',
-        re1:'Bário (ba)',
-        re2:'Hidrogênio (H)',
-        re3:'Litio (Li)',
-        rc:'Frâncio (fr)'
-    }
-    
-]
-
+];
 
 let pergunta;
 
-let contp = 0;
+let contp = 9;
 
-sortearPergunta = () => {
+const sortearPergunta = () => {
     pergunta = perguntas[contp]
 }
 
@@ -107,6 +97,7 @@ let t2 = document.getElementById('title2')
 let a_start = document.getElementById('a_start')
 let title = document.getElementById('title')
 let hp = document.getElementById('hp')
+let header_title = document.getElementById('header-title')
 // tres corações de vida
 let l1 = document.getElementById('l1')
 let l2 = document.getElementById('l2')
@@ -116,9 +107,9 @@ let chp = 3;
 let cp = 1;
 
 
-exibirPergunta = () => {
-    //relogio()
-    hp.style.display="block"
+const exibirPergunta = () => {
+    header_title.classList.toggle('header-title-open')
+    hp.style.display="flex"
     let cont = 0;
     sortearPergunta()
     quest.innerHTML= `<h3 class="pergunta">`+pergunta.enunciado+`</h3>`
@@ -138,14 +129,12 @@ exibirPergunta = () => {
 quest.innerHTML=`<button class="start" onclick="exibirPergunta()">Play</button>`
 let resp = [];
 
-validar = (p) => {
+const validar = (p) => {
     let t = resp.indexOf(pergunta.rc)
     if(p == t){
         window.alert('Parabéns! Você acertou!')
         contp++
         cp++
-        console.log(contp)
-        console.log(perguntas.length)
         ans.innerHTML=''
         if(contp !== perguntas.length){
         Rsec=20
@@ -168,12 +157,12 @@ validar = (p) => {
 }
 
 
-reset = () => {
+const reset = () => {
     location.reload()
 }
 
 
-gameover = () => {
+const gameover = () => {
     clearInterval(relogio())
     timer.style.display="none"
     hp.style.display="none"
