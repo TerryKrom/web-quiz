@@ -18,7 +18,7 @@ body{
     justify-content: space-around;
     align-items: center;
     margin: 0 auto;
-    width: 50vw;
+    width: 70vw;
     height: 70vh;
     border-radius: 10px;
     flex-direction: column;
@@ -39,7 +39,9 @@ body{
     margin: 0 auto;
     text-align: left;
 }
-
+.display-start{
+    width: auto;
+}
 #header-title{
     font-size: 1.8rem;
 }

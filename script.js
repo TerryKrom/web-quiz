@@ -108,6 +108,7 @@ let cp = 1;
 
 
 const exibirPergunta = () => {
+    quest.classList.toggle('display-start')
     header_title.classList.toggle('header-title-open')
     hp.style.display="flex"
     let cont = 0;
@@ -126,7 +127,9 @@ const exibirPergunta = () => {
     title.innerHTML=`Questão: `+cp+``
     resp = respostas;
 }
+
 quest.innerHTML=`<button class="start" onclick="exibirPergunta()">Play</button>`
+quest.classList.toggle('display-start')
 let resp = [];
 
 const validar = (p) => {
