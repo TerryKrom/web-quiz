@@ -83,7 +83,7 @@ const perguntas = [
 
 let pergunta;
 
-let contp = 9;
+let contp = 0;
 
 const sortearPergunta = () => {
     pergunta = perguntas[contp]
@@ -98,6 +98,7 @@ let a_start = document.getElementById('a_start')
 let title = document.getElementById('title')
 let hp = document.getElementById('hp')
 let header_title = document.getElementById('header-title')
+let ranking_container = document.querySelector('.ranking');
 // tres corações de vida
 let l1 = document.getElementById('l1')
 let l2 = document.getElementById('l2')
@@ -108,6 +109,7 @@ let cp = 1;
 
 
 const exibirPergunta = () => {
+    ranking_container.style.display='none';
     quest.classList.toggle('display-start')
     header_title.classList.toggle('header-title-open')
     hp.style.display="flex"
@@ -130,11 +132,13 @@ const exibirPergunta = () => {
 
 quest.innerHTML=`<button class="start" onclick="exibirPergunta()">Play</button>`
 quest.classList.toggle('display-start')
+ranking_container.style.display='flex';
+
 let resp = [];
 
 const validar = (p) => {
-    let t = resp.indexOf(pergunta.rc)
-    if(p == t){
+    let correct = resp.indexOf(pergunta.rc)
+    if(p == correct){
         window.alert('Parabéns! Você acertou!')
         contp++
         cp++
@@ -161,7 +165,7 @@ const validar = (p) => {
 
 
 const reset = () => {
-    location.reload()
+    window.location.reload()
 }
 
 
@@ -172,10 +176,48 @@ const gameover = () => {
 content.innerHTML=`
     <h2 class="gameover" align="center">GAME OVER</h2>
     <button class="start" onclick="reset()">Reiniciar</button>`
-content.style.marginTop="11.7px"
 }
 
 let vida = [l1,l2,l3]
 tiravida = () => {
     vida[chp-1].style.display="none"
 }
+
+const fetchRandomUrbanPhoto = async () => {
+    const apiKey = 'imQIiK3j2_cg3D6eKT1qAhUUT0wVQYGghp3mV1swBDM'; // Substitua pela sua chave de API do Unsplash
+    const apiUrl = `https://api.unsplash.com/photos/random?query=urban,city`;
+
+    try {
+        const response = await fetch(apiUrl, {
+            headers: {
+                Authorization: `Client-ID ${apiKey}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch photo from Unsplash');
+        }
+
+        const data = await response.json();
+        const photoUrl = data.urls.regular;
+        return photoUrl;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+// document.addEventListener('DOMContentLoaded', function(){
+    
+// // Chamando a função e usando a URL da foto
+// fetchRandomUrbanPhoto()
+// .then(photoUrl => {
+//     if (photoUrl) {
+//         console.log(photoUrl);
+//         document.body.style.background=`url('${photoUrl}') no-repeat`
+//     } else {
+//         console.log('Failed to fetch photo.');
+//     }
+// });
+
+// })

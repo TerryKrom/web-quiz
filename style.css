@@ -5,11 +5,15 @@
     margin: 0;
     padding: 0;
     font-family: "Outfit";
-    transition: 0.3s linear;
+    transition: 0.2s linear;
 }
 
 body{
-    background-color: #252525;    
+    background: url('wpp.jpg');
+    background-position: center;
+    background-size:auto;
+    background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 .content{
@@ -17,7 +21,7 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 0 auto;
+    margin: 0px auto 20px auto;
     width: 70vw;
     height: 70vh;
     border-radius: 10px;
@@ -44,10 +48,11 @@ body{
 }
 #header-title{
     font-size: 1.8rem;
+    margin-bottom: 50px;
 }
 
 .header-title-open{
-    animation: width_extends 0.4s linear;
+    animation: width_extends 0.6s linear;
     width: 90%;
 }
 
@@ -62,11 +67,11 @@ body{
     }
     50%{
         opacity: 0.50;
-        transform: translateY(15px);
+        transform: translateY(20px);
     }
     75%{
         opacity: 0.75;
-        transform: translateY(5px);
+        transform: translateY(-15px);
     }
     100%{
         opacity: 1;
@@ -82,13 +87,39 @@ footer{
     text-align: center;
     color: #fff;
 }
+@keyframes left_appear {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
-.btn-r{
+.btn-r {
+    opacity: 0; /* Começa com opacity 0 por padrão */
     border: none;
     background-color: #303030;
     width: 100%;
     height: 30px;
-    animation: popout 1s ease;
+}
+
+#ans .btn-r:nth-child(1) {
+    animation: left_appear 0.5s linear 0.6s forwards; /* Delay e animação para o primeiro botão */
+}
+
+#ans .btn-r:nth-child(2) {
+    animation: left_appear 0.5s linear 0.8s forwards; /* Delay e animação para o segundo botão */
+}
+
+#ans .btn-r:nth-child(3) {
+    animation: left_appear 0.5s linear 1s forwards; /* Delay e animação para o terceiro botão */
+}
+
+#ans .btn-r:nth-child(4) {
+    animation: left_appear 0.5s linear 1.2s forwards; /* Delay e animação para o quarto botão */
 }
 
 #ans li{
@@ -103,8 +134,9 @@ footer{
     border-radius: 5px;
 }
 
-#ans li:hover, .start:hover{
-     opacity: 0.9;
+.btn-r:hover, .start:hover{
+     transition: 0.2s linear;
+     background-color: #252525ce;
 }
 
 
@@ -133,7 +165,7 @@ footer{
     margin: 100px auto 0px auto;
 }
 
-#hp div {
+#hp div{
     animation: life 0.4s ease-in-out infinite alternate;
     font-size: 1.7rem;
 }
@@ -157,21 +189,6 @@ footer{
     
 }
 
-.gameover{
-    font-size: 22pt;
-}
-
-@media (min-width: 1280px) {
-    .life{
-        margin-left: 25%;
-    }
-    .audio{
-        margin-right: 25%;
-    }
-    .clock{
-        margin-left: 25%;
-    }
-}
 .center{
     width: 90%;
     height: 90%;
@@ -180,4 +197,23 @@ footer{
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
+}
+.ranking{
+    border: 1px solid #000;
+    width: 100%;
+    height: 300px;
+}
+.heading-text h2{
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+.heading-text{
+    margin: 5px 10px;
+}
+.line{
+    width: 125%;
+    background-color: #252525;
+    height: 3px;
+    border-radius: 15px;
+    margin-top: 3px;
 }
