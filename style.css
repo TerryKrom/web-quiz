@@ -11,9 +11,57 @@
 body{
     background: url('wpp.jpg');
     background-position: center;
-    background-size:auto;
+    background-size: auto;
     background-repeat: no-repeat;
     overflow: hidden;
+}
+
+@keyframes popup {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50%{
+        opacity: 0.5;
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes popBounceOut {
+	0%,
+	60%,
+	75%,
+	90%,
+	100% {
+		-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+		transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000)
+	}
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(0, -3000px, 0);
+		transform: translate3d(0, -3000px, 0)
+	}
+	60% {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 25px, 0);
+		transform: translate3d(0, 25px, 0)
+	}
+	75% {
+		-webkit-transform: translate3d(0, -10px, 0);
+		transform: translate3d(0, -10px, 0)
+	}
+	90% {
+		-webkit-transform: translate3d(0, 5px, 0);
+		transform: translate3d(0, 5px, 0)
+	}
+	100% {
+		-webkit-transform: none;
+		transform: none
+	}
 }
 
 .content{
@@ -21,11 +69,16 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 0px auto 20px auto;
+    margin: 20px auto 20px auto;
     width: 70vw;
     height: 70vh;
     border-radius: 10px;
     flex-direction: column;
+}
+
+.content.popup{
+    animation: popBounceOut 0.8s linear forwards; /* Aplica a animação */
+    animation-delay: 0s;
 }
 
 #ans{
@@ -42,21 +95,39 @@ body{
     width: 90%;
     margin: 0 auto;
     text-align: left;
+    animation: left_appear 0.6s linear;
 }
 .display-start{
     width: auto;
 }
+
 #header-title{
     font-size: 1.8rem;
     margin-bottom: 50px;
 }
+.svg-container img{
+    width: 50%;
+}
+
+.svg-container{
+    width: 90%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+}
+.svg-container.show{
+    animation: appear 0.6s linear;
+    display: flex;
+}
 
 .header-title-open{
-    animation: width_extends 0.6s linear;
+    animation: fall_bounce 0.6s linear;
     width: 90%;
 }
 
-@keyframes width_extends{
+
+@keyframes fall_bounce{
     0%{
         opacity: 0;
         transform: translateY(-25px);
@@ -162,7 +233,7 @@ footer{
     justify-content: center;
     align-items: center;
     width: 50vw;
-    margin: 100px auto 0px auto;
+    margin: 50px auto 0px auto;
 }
 
 #hp div{

@@ -84,10 +84,13 @@ const perguntas = [
 let pergunta;
 
 let contp = 0;
+// tres corações de vida
+let l1 = document.getElementById('l1')
+let l2 = document.getElementById('l2')
+let l3 = document.getElementById('l3')
 
-const sortearPergunta = () => {
-    pergunta = perguntas[contp]
-}
+let chp = 3;
+let cp = 1;
 
 let content = document.getElementById('content')
 let quest = document.getElementById('quest')
@@ -99,32 +102,41 @@ let title = document.getElementById('title')
 let hp = document.getElementById('hp')
 let header_title = document.getElementById('header-title')
 let ranking_container = document.querySelector('.ranking');
-// tres corações de vida
-let l1 = document.getElementById('l1')
-let l2 = document.getElementById('l2')
-let l3 = document.getElementById('l3')
+let svg_container = document.querySelector('.svg-container');
+let resp = [];
 
-let chp = 3;
-let cp = 1;
 
+const sortearPergunta = () => {
+    pergunta = perguntas[contp]
+}
 
 const exibirPergunta = () => {
+    if (content.classList.contains('popup')) {
+        content.classList.remove('popup');
+        void content.offsetWidth; // Isso força o navegador a recarregar a animação ao remover a classe
+    }
+    
+    content.classList.add('popup');
     ranking_container.style.display='none';
     quest.classList.toggle('display-start')
-    header_title.classList.toggle('header-title-open')
+    svg_container.classList.add('show');
+    header_title.style.display='none'
     hp.style.display="flex"
-    let cont = 0;
+    
     sortearPergunta()
+
     quest.innerHTML= `<h3 class="pergunta">`+pergunta.enunciado+`</h3>`
     const respostas = [pergunta.re1,
     pergunta.re2,
     pergunta.re3,
     pergunta.rc]
-    respostas.sort()
-    for(let c = 0; c < respostas.length; c++){
-        let cont = c
-        ans.innerHTML+=`<li class="btn-r" onclick="validar(`+cont+`)">`+respostas[cont]+`</li>`
-    }
+    respostas.sort();
+
+    respostas.forEach((resposta, index) => {
+        ans.innerHTML += `<li class="btn-r" onclick="validar(${index})">${resposta}</li>`;
+    });
+    
+
     title.style.display="block"
     title.innerHTML=`Questão: `+cp+``
     resp = respostas;
@@ -134,8 +146,6 @@ quest.innerHTML=`<button class="start" onclick="exibirPergunta()">Play</button>`
 quest.classList.toggle('display-start')
 ranking_container.style.display='flex';
 
-let resp = [];
-
 const validar = (p) => {
     let correct = resp.indexOf(pergunta.rc)
     if(p == correct){
@@ -144,9 +154,9 @@ const validar = (p) => {
         cp++
         ans.innerHTML=''
         if(contp !== perguntas.length){
-        Rsec=20
         exibirPergunta()
         }else{
+            svg_container.classList.remove('show');
             window.alert('Parabéns! Você concluiu o Quiz!')
             content.innerHTML=`<h3 class="pergunta">Registre seu nome:</h3>
             <input type="text" class="nome" placeholder="Digite seu nome:">
@@ -170,8 +180,6 @@ const reset = () => {
 
 
 const gameover = () => {
-    clearInterval(relogio())
-    timer.style.display="none"
     hp.style.display="none"
 content.innerHTML=`
     <h2 class="gameover" align="center">GAME OVER</h2>
@@ -182,42 +190,3 @@ let vida = [l1,l2,l3]
 tiravida = () => {
     vida[chp-1].style.display="none"
 }
-
-const fetchRandomUrbanPhoto = async () => {
-    const apiKey = 'imQIiK3j2_cg3D6eKT1qAhUUT0wVQYGghp3mV1swBDM'; // Substitua pela sua chave de API do Unsplash
-    const apiUrl = `https://api.unsplash.com/photos/random?query=urban,city`;
-
-    try {
-        const response = await fetch(apiUrl, {
-            headers: {
-                Authorization: `Client-ID ${apiKey}`
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to fetch photo from Unsplash');
-        }
-
-        const data = await response.json();
-        const photoUrl = data.urls.regular;
-        return photoUrl;
-    } catch (error) {
-        console.error(error);
-        return null;
-    }
-}
-
-// document.addEventListener('DOMContentLoaded', function(){
-    
-// // Chamando a função e usando a URL da foto
-// fetchRandomUrbanPhoto()
-// .then(photoUrl => {
-//     if (photoUrl) {
-//         console.log(photoUrl);
-//         document.body.style.background=`url('${photoUrl}') no-repeat`
-//     } else {
-//         console.log('Failed to fetch photo.');
-//     }
-// });
-
-// })
