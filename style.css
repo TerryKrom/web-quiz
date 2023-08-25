@@ -93,6 +93,7 @@ body{
 
 .quest{
     width: 90%;
+    height: 15%;
     margin: 0 auto;
     text-align: left;
     animation: left_appear 0.6s linear;

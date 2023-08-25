@@ -101,7 +101,7 @@ const perguntas = [
         re1: "Integração harmoniosa entre diferentes grupos sociais",
         re2: "União de cidades com caracteristicas parecidas",
         re3: "Concentração de atividades rurais",
-        rc: "Divisão de cidades em áreas socioeconômicas diferentes",
+        rc: "Divisão de cidades em áreas socialmente diferentes",
     },
     {
         id: 14,
@@ -116,7 +116,7 @@ const perguntas = [
         enunciado: "O que é um plano diretor urbano?",
         re1: "Um projeto para expandir atividades agrícolas",
         re2: "Fusão de áreas urbanas vizinhas",
-        re3: "Um sistema de transporte coletivo que atende a população",
+        re3: "Sistema de transporte que atende a população",
         rc: "conjunto de regras para o desenvolvimento e organização",
     },
     {
@@ -125,7 +125,7 @@ const perguntas = [
         re1: "Um sistema de transporte individual",
         re2: "Um sistema de transporte informal",
         re3: "Sistema de transporte para grupos especificos",
-        rc: "Um sistema de transporte coletivo que atende a população",
+        rc: "Sistema de transporte que atende a população",
     },
     {
         id: 17,
@@ -162,7 +162,7 @@ const perguntas = [
 ];
 
 
-let contador_perguntas = 0;
+let contador_perguntas = 9;
 let pergunta;
 
 // tres corações de vida
@@ -171,7 +171,6 @@ let l2 = document.getElementById('l2')
 let l3 = document.getElementById('l3')
 
 let chp = 3;
-let cp = 1;
 
 let content = document.getElementById('content')
 let quest = document.getElementById('quest')
@@ -220,7 +219,7 @@ const exibirPergunta = () => {
     
 
     title.style.display="block"
-    title.innerHTML=`Questão: `+cp+``
+    title.innerHTML=`Questão: `+contador_perguntas+``
     resp = respostas;
 }
 
@@ -233,9 +232,8 @@ const checkAnswer = (p) => {
     if(p == correct){
         window.alert('Parabéns! Você acertou!')
         contador_perguntas++
-        cp++
         ans.innerHTML=''
-        if(contador_perguntas !== perguntas.length){
+        if(contador_perguntas <= 10){
         exibirPergunta()
         }else{
             svg_container.classList.remove('show');
