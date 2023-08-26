@@ -303,10 +303,15 @@ const checkAnswer = (p) => {
         exibirPergunta()
         }else{
             svg_container.classList.remove('show');
-            window.alert('Parabéns! Você concluiu o Quiz!')
-            content.innerHTML=`<h3 class="pergunta">Registre seu nome:</h3>
-            <input type="text" required class="nome" placeholder="Digite seu nome:" maxlength="10">
-            <button class="start" onclick="saveUser()">Enviar</button>`
+            window.alert('Parabéns! Você concluiu o Quiz!');
+
+            content.innerHTML=`
+            <div class="center">
+                <h2 class="title-name">Registre seu nome:</h2>
+                <input type="text" required class="nome" placeholder="Digite seu nome:" maxlength="10">
+                <button class="start" onclick="saveUser()">Enviar</button>
+            </div>
+            `
         }
     }else{
         window.alert('Que pena! Você errou!')

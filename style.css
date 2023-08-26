@@ -107,11 +107,24 @@ body {
     text-align: left;
     animation: popBounceOut 0.6s linear forwards;
 }
+
 .pergunta{
-    text-align: justify;
     width: 25rem;
 }
-
+.nome{
+    width: 20rem;
+    height: 2.9rem;
+    border-radius: 10px;
+    border: none;
+    outline: 0;
+    text-indent: 10px;
+    font-size: 1.1rem;
+    color: var(--pastel-color3);
+}
+.title-name{
+    font-weight: 500;
+    color: #eee;
+}
 .quest.float{
     animation: float 2s linear infinite;
 }
