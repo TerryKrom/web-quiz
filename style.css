@@ -76,6 +76,12 @@ body {
     flex-direction: column;
 }
 
+@media only screen and (max-width: 540px){
+    .content{
+        width: 95vw;
+    }
+}
+
 .content.popup{
     animation: popBounceOut 0.8s linear forwards; /* Aplica a animação */
     animation-delay: 0s;
