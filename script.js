@@ -117,7 +117,7 @@ const perguntas = [
         re1: "Um projeto para expandir atividades agrícolas",
         re2: "Fusão de áreas urbanas vizinhas",
         re3: "Sistema de transporte que atende a população",
-        rc: "conjunto de regras para o desenvolvimento e organização",
+        rc: "Regras para o desenvolvimento e organização de cidades",
     },
     {
         id: 16,
@@ -129,7 +129,7 @@ const perguntas = [
     },
     {
         id: 17,
-        enunciado: "Qual afirmativa está correta sobre os impactos culturais da urbanização?",
+        enunciado: "Qual desses é um impacto cultural da urbanização?",
         re1: "Homogeneização cultural",
         re2: "Diminuição da população",
         re3: "Êxodo rural",
@@ -163,6 +163,7 @@ const perguntas = [
 
 
 let contador_perguntas = 1;
+
 let pergunta;
 
 // tres corações de vida
@@ -185,10 +186,23 @@ let ranking_container = document.querySelector('.ranking');
 let svg_container = document.querySelector('.svg-container');
 let resp = [];
 
+let perguntasNaoSorteadas = [...perguntas]; // Cria uma cópia das perguntas originais
+let perguntasSorteadas = []; // Array para armazenar as perguntas já sorteadas
+
+
 
 const sortearPergunta = () => {
-    pergunta = perguntas[Math.floor(Math.random() * perguntas.length)]
+    if (perguntasNaoSorteadas.length === 0) {
+        perguntasNaoSorteadas = [...perguntasSorteadas]; // Se todas as perguntas foram sorteadas, reinicia o array
+        perguntasSorteadas = [];
+    }
+
+    const indiceSorteado = Math.floor(Math.random() * perguntasNaoSorteadas.length);
+    pergunta = perguntasNaoSorteadas[indiceSorteado];
+    perguntasSorteadas.push(pergunta);
+    perguntasNaoSorteadas.splice(indiceSorteado, 1);
 }
+
 
 const exibirPergunta = () => {
 
@@ -246,7 +260,7 @@ const checkAnswer = (p) => {
             content.innerHTML=`<h3 class="pergunta">Registre seu nome:</h3>
             <input type="text" class="nome" placeholder="Digite seu nome:">
             <h3 class="pergunta">Pontuação: 10/10</h3>
-            <button class="start" onclick="reset()">Voltar</button>`
+            <button class="start" onclick="reset()">Enviar</button>`
         }
     }else{
         window.alert('Que pena! Você errou!')
@@ -265,6 +279,7 @@ const reset = () => {
 
 
 const gameover = () => {
+    perguntasSorteadas = [];
     hp.style.display="none"
     content.innerHTML=`
     <h2 class="gameover" align="center">GAME OVER</h2>
