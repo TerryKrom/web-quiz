@@ -140,7 +140,7 @@ const perguntas = [
         enunciado: "O que são cidades globais?",
         re1: "Cidades de pequeno porte",
         re2: "Cidades que exportam produtos",
-        re3: "Cidades com mais de 10 milhões de habitantes",
+        re3: "Cidades com 10 milhões de habitantes",
         rc: "Cidades que desempenham papel central na economia global",
     },
     {
