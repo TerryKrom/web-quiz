@@ -111,14 +111,14 @@ const perguntas = [
         re3: "Concentração de atividades urbanas",
         rc: "Poluição do ar e esgotamento dos recursos",
     },
-    {
-        id: 15,
-        enunciado: "O que é um plano diretor urbano?",
-        re1: "Um projeto para expandir atividades agrícolas",
-        re2: "Fusão de áreas urbanas vizinhas",
-        re3: "Sistema de transporte que atende a população",
-        rc: "Regras para o desenvolvimento e organização de cidades",
-    },
+    // {
+    //     id: 15,
+    //     enunciado: "O que é um plano diretor urbano?",
+    //     re1: "Um projeto para expandir atividades agrícolas",
+    //     re2: "Fusão de áreas urbanas vizinhas",
+    //     re3: "Sistema de transporte que atende a população",
+    //     rc: "Regras para o desenvolvimento e organização de cidades",
+    // },
     {
         id: 16,
         enunciado: "O que é a rede de transporte público?",
@@ -191,7 +191,7 @@ let header_title = document.getElementById('header-title')
 let ranking_div = document.querySelector('.ranking')
 let ranking_container = document.querySelector('.ranking-names');
 let savedNames = localStorage.getItem('ranking-names') || [];
-
+let central_img = document.querySelector(".central-img")
 let ranking = [];
 
 let svg_container = document.querySelector('.svg-container');
@@ -222,7 +222,7 @@ const exibirPergunta = () => {
         content.classList.remove('popup');
         void content.offsetWidth; // Isso força o navegador a recarregar a animação ao remover a classe
     }
-    
+    central_img.style.display="none";
     content.classList.add('popup');
     ranking_div.style.display='none';
     quest.classList.toggle('display-start')
@@ -241,7 +241,7 @@ const exibirPergunta = () => {
 
     console.log(svgName)
     
-
+    quest.classList.remove('float');
     quest.innerHTML= `<h3 class="pergunta">`+pergunta.enunciado+`</h3>`
     const respostas = [pergunta.re1,
     pergunta.re2,
@@ -269,6 +269,7 @@ const createName = (name) => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    central_img.style.display="block";
     ranking.push(savedNames)
 
     quest.innerHTML=`<button class="start" onclick="exibirPergunta()">Play</button>`
@@ -322,12 +323,16 @@ const reset = () => {
 
 const saveUser = () => {
     let nome = document.querySelector('.nome').value
-    ranking.push(nome);
+    if(nome != ''){
+        ranking.push(nome);
     console.log(nome)
     localStorage.setItem('ranking-names', ranking)
     setInterval(function(){
         reset()
     }, 1000)
+    }else{
+        alert('Insira um nome valido!')
+    }
 }
 
 const gameover = () => {
@@ -343,3 +348,11 @@ let vida = [l1,l2,l3]
 const tiravida = () => {
     vida[chp-1].style.display="none"
 }
+
+let btn_clear = document.querySelector('.clear');
+
+btn_clear.addEventListener('click', () => {
+    ranking = [];
+    localStorage.setItem('ranking-names', '')
+    ranking_container.innerHTML='';
+})

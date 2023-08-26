@@ -66,7 +66,7 @@ body{
     align-items: center;
     margin: 20px auto 20px auto;
     width: 70vw;
-    height: 70vh;
+    height: 75vh;
     border-radius: 10px;
     flex-direction: column;
 }
@@ -102,17 +102,21 @@ body{
     text-align: left;
     animation: popBounceOut 0.6s linear forwards;
 }
+.pergunta{
+    text-align: justify;
+    width: 25rem;
+}
 
 .quest.float{
     animation: float 2s linear infinite;
 }
+
 .display-start{
     width: auto;
 }
 
 #header-title{
     font-size: 1.8rem;
-    margin-bottom: 50px;
 }
 .svg-container img{
     width: 45%;
@@ -214,7 +218,7 @@ footer{
     border-radius: 5px;
 }
 
-.btn-r:hover, .start:hover{
+.btn-r:hover, .start:hover, .clear:hover{
      transition: 0.2s linear;
      background-color: #252525ce;
 }
@@ -285,13 +289,26 @@ footer{
     height: 300px;
     border-radius:5px;
 }
+
 .heading-text h2{
     font-weight: 400;
     font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
 }
+.heading-text button{
+    background-color: #252525;
+    color: #eee;
+    width: 5rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
 .heading-text{
-    margin: 5px 10px;
+    margin: 10px;
 }
+
 .line{
     width: 100%;
     background-color: #252525;
@@ -335,4 +352,9 @@ footer{
     border-radius: 5px;
     font-size: 1.0rem;
     color: #eee;
+}
+
+.central-img{
+    width: 20%;
+    margin: 20px;
 }
