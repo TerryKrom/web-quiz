@@ -15,9 +15,8 @@
 
 body {
     background: url('./images/AnimatedShape.svg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: stretch;
     overflow: hidden;
 }
 
