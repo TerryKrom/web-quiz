@@ -162,7 +162,7 @@ const perguntas = [
 ];
 
 
-let contador_perguntas = 1;
+let contador_perguntas = 10;
 
 let pergunta;
 
@@ -182,7 +182,12 @@ let a_start = document.getElementById('a_start')
 let title = document.getElementById('title')
 let hp = document.getElementById('hp')
 let header_title = document.getElementById('header-title')
-let ranking_container = document.querySelector('.ranking');
+let ranking_div = document.querySelector('.ranking')
+let ranking_container = document.querySelector('.ranking-names');
+let savedNames = localStorage.getItem('ranking-names') || [];
+
+let ranking = [];
+
 let svg_container = document.querySelector('.svg-container');
 let resp = [];
 
@@ -203,6 +208,12 @@ const sortearPergunta = () => {
     perguntasNaoSorteadas.splice(indiceSorteado, 1);
 }
 
+let centralSvg = document.getElementById('central-svg')
+
+const loadImage = () => {
+    
+}
+
 
 const exibirPergunta = () => {
 
@@ -212,7 +223,7 @@ const exibirPergunta = () => {
     }
     
     content.classList.add('popup');
-    ranking_container.style.display='none';
+    ranking_div.style.display='none';
     quest.classList.toggle('display-start')
     svg_container.classList.add('show');
     header_title.style.display='none'
@@ -237,14 +248,36 @@ const exibirPergunta = () => {
     resp = respostas;
 }
 
-quest.innerHTML=`<button class="start" onclick="exibirPergunta()">Play</button>`
+const createName = (name) => {
+    let div_name = document.createElement('div');
+    div_name.classList.add('ranking-name')
+    div_name.textContent = name;
+    ranking_container.appendChild(div_name)
+}
 
-setInterval(function(){
-    quest.style.animation=''
-    quest.classList.add('float')
-}, 1000)
-quest.classList.toggle('display-start')
-ranking_container.style.display='flex';
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    ranking.push(savedNames)
+
+    quest.innerHTML=`<button class="start" onclick="exibirPergunta()">Play</button>`
+
+    setInterval(function(){
+        quest.style.animation=''
+        quest.classList.add('float')
+    }, 1000)
+    quest.classList.toggle('display-start')
+    ranking_container.style.display='flex';
+    let newRanking = ranking[0].split(',');
+    console.log(newRanking)
+
+    if(newRanking.lenght != 0){
+        newRanking.forEach(element => {
+            createName(element)
+        })
+    }
+})
+
 
 const checkAnswer = (p) => {
     let correct = resp.indexOf(pergunta.rc)
@@ -258,9 +291,8 @@ const checkAnswer = (p) => {
             svg_container.classList.remove('show');
             window.alert('Parabéns! Você concluiu o Quiz!')
             content.innerHTML=`<h3 class="pergunta">Registre seu nome:</h3>
-            <input type="text" class="nome" placeholder="Digite seu nome:">
-            <h3 class="pergunta">Pontuação: 10/10</h3>
-            <button class="start" onclick="reset()">Enviar</button>`
+            <input type="text" required class="nome" placeholder="Digite seu nome:" maxlength="10">
+            <button class="start" onclick="saveUser()">Enviar</button>`
         }
     }else{
         window.alert('Que pena! Você errou!')
@@ -277,6 +309,15 @@ const reset = () => {
     window.location.reload()
 }
 
+const saveUser = () => {
+    let nome = document.querySelector('.nome').value
+    ranking.push(nome);
+    console.log(nome)
+    localStorage.setItem('ranking-names', ranking)
+    setInterval(function(){
+        reset()
+    }, 1000)
+}
 
 const gameover = () => {
     perguntasSorteadas = [];
