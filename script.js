@@ -161,8 +161,14 @@ const perguntas = [
     },
 ];
 
-
-let contador_perguntas = 10;
+const perguntas_imagens = {
+    17: './images/hands.png',
+    9: './images/infrastructure.png',
+    3: './images/skyscraper.png',
+    4: './images/buildings.png',
+    5: './images/civil-engineering.png',
+}
+let contador_perguntas = 1;
 
 let pergunta;
 
@@ -210,11 +216,6 @@ const sortearPergunta = () => {
 
 let centralSvg = document.getElementById('central-svg')
 
-const loadImage = () => {
-    
-}
-
-
 const exibirPergunta = () => {
 
     if (content.classList.contains('popup')) {
@@ -229,7 +230,17 @@ const exibirPergunta = () => {
     header_title.style.display='none'
     hp.style.display="flex"
     
+    let svgName;
     sortearPergunta()
+    if(perguntas_imagens.hasOwnProperty(pergunta.id)){
+        svgName = perguntas_imagens[pergunta.id];
+        centralSvg.setAttribute('src', `${svgName}`);
+    }else{
+        centralSvg.setAttribute('src', './images/town-svg.svg')
+    }
+
+    console.log(svgName)
+    
 
     quest.innerHTML= `<h3 class="pergunta">`+pergunta.enunciado+`</h3>`
     const respostas = [pergunta.re1,
