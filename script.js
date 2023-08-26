@@ -257,7 +257,7 @@ const exibirPergunta = () => {
     
 
     title.style.display="block"
-    title.innerHTML+=`Questão: `+contador_perguntas+``
+    title.innerHTML=`Questão: `+contador_perguntas+``
     resp = respostas;
 }
 
