@@ -168,7 +168,8 @@ const perguntas_imagens = {
     4: './images/buildings.png',
     5: './images/civil-engineering.png',
 }
-let contador_perguntas = 1;
+
+let contador_perguntas = 10;
 
 let pergunta;
 
@@ -192,6 +193,7 @@ let ranking_div = document.querySelector('.ranking')
 let ranking_container = document.querySelector('.ranking-names');
 let savedNames = localStorage.getItem('ranking-names') || [];
 let central_img = document.querySelector(".central-img")
+
 let ranking = [];
 
 let svg_container = document.querySelector('.svg-container');
@@ -270,7 +272,7 @@ const createName = (name) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     central_img.style.display="block";
-    ranking.push(savedNames)
+    ranking = localStorage.getItem('ranking-names') ? localStorage.getItem('ranking-names').split(',') : [];
 
     quest.innerHTML=`<button class="start" onclick="exibirPergunta()">Play</button>`
 
@@ -324,7 +326,7 @@ const reset = () => {
 const saveUser = () => {
     let nome = document.querySelector('.nome').value
     if(nome != ''){
-        ranking.push(nome);
+    ranking.push(nome);
     console.log(nome)
     localStorage.setItem('ranking-names', ranking)
     setInterval(function(){
