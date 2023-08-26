@@ -91,12 +91,25 @@ body{
     list-style: none;
 }
 
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
 .quest{
     width: 90%;
     height: 15%;
     margin: 0 auto;
     text-align: left;
-    animation: left_appear 0.6s linear;
+    animation: popBounceOut 0.6s linear forwards;
+}
+
+.quest.float{
+    animation: float 2s lienar infinite;
 }
 .display-start{
     width: auto;

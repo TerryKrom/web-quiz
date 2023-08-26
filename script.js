@@ -162,7 +162,7 @@ const perguntas = [
 ];
 
 
-let contador_perguntas = 9;
+let contador_perguntas = 1;
 let pergunta;
 
 // tres corações de vida
@@ -224,6 +224,11 @@ const exibirPergunta = () => {
 }
 
 quest.innerHTML=`<button class="start" onclick="exibirPergunta()">Play</button>`
+
+setInterval(function(){
+    quest.style.animation=''
+    quest.classList.add('float')
+}, 1000)
 quest.classList.toggle('display-start')
 ranking_container.style.display='flex';
 
