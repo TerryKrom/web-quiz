@@ -15,9 +15,9 @@
 
 body {
     background: url('./images/AnimatedShape.svg');
-    /* background-color: var(--pastel-color3); */
+    background-color: var(--pastel-color3);
     background-position: center center;
-    background-size: cover;
+    background-size: cover cover;
     overflow: hidden;
 }
 
