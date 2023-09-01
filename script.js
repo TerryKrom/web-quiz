@@ -169,7 +169,7 @@ const perguntas_imagens = {
     5: './images/civil-engineering.png',
 }
 
-let contador_perguntas = 9;
+let contador_perguntas = 1;
 
 let pergunta;
 
