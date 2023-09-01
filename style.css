@@ -386,12 +386,16 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 350px;
+    flex-direction: column;
+    height: 35%;
     width: 60%;
     box-shadow: 0px 0px 50px rgba(0,0,0,0.7);
 }
 
 #modal-title{
+    margin: 20px;
+    text-transform: capitalize;
     color: #eee;
     font-weight: 300;
+    text-align: center;
 }

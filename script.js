@@ -178,7 +178,7 @@ let l1 = document.getElementById('l1')
 let l2 = document.getElementById('l2')
 let l3 = document.getElementById('l3')
 
-let chp = 3;
+let contador_hp = 3;
 
 let content = document.getElementById('content')
 let quest = document.getElementById('quest')
@@ -337,8 +337,8 @@ const checkAnswer = (p) => {
         }, 3000)
         clearTimeout();
         tiravida()
-        chp--
-        if(chp == 0){
+        contador_hp--
+        if(contador_hp == 0){
             gameover()
         }
     }
@@ -373,7 +373,7 @@ const gameover = () => {
 let vida = [l1,l2,l3]
 
 const tiravida = () => {
-    vida[chp-1].style.display="none"
+    vida[contador_hp-1].style.display="none"
 }
 
 let btn_clear = document.querySelector('.clear');
