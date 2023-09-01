@@ -399,3 +399,8 @@ footer{
     font-weight: 300;
     text-align: center;
 }
+
+.gameover{
+    color: #eee;
+    font-weight: 400;
+}

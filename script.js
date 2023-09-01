@@ -321,14 +321,17 @@ const checkAnswer = (p) => {
         }else{
             svg_container.classList.remove('show');
             openModal('Parabéns! Você concluiu o Quiz!');
-
-            content.innerHTML=`
+            
+            setTimeout(() => {
+                closeModal()
+                content.innerHTML=`
             <div class="center">
                 <h2 class="title-name">Registre seu nome:</h2>
                 <input type="text" required class="nome" placeholder="Digite seu nome:" maxlength="10">
                 <button class="start" onclick="saveUser()">Enviar</button>
             </div>
             `
+            }, 2000)
         }
     }else{
         openModal('Que pena! Você errou!')
@@ -336,9 +339,13 @@ const checkAnswer = (p) => {
             closeModal()
         }, 3000)
         clearTimeout();
-        tiravida()
+
+        remove_hp()
+
         contador_hp--
+
         if(contador_hp == 0){
+            closeModal();
             gameover()
         }
     }
@@ -372,7 +379,7 @@ const gameover = () => {
 
 let vida = [l1,l2,l3]
 
-const tiravida = () => {
+const remove_hp = () => {
     vida[contador_hp-1].style.display="none"
 }
 
