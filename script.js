@@ -169,7 +169,7 @@ const perguntas_imagens = {
     5: './images/civil-engineering.png',
 }
 
-let contador_perguntas = 1;
+let contador_perguntas = 10;
 
 let pergunta;
 
@@ -320,6 +320,8 @@ const checkAnswer = (p) => {
             clearTimeout()
         }else{
             svg_container.classList.remove('show');
+            content.innerHTML='';
+            
             openModal('Parabéns! Você concluiu o Quiz!');
             
             setTimeout(() => {
@@ -331,6 +333,13 @@ const checkAnswer = (p) => {
                 <button class="start" onclick="saveUser()">Enviar</button>
             </div>
             `
+            if (content.classList.contains('popup')) {
+                content.classList.remove('popup');
+                void content.offsetWidth; // Isso força o navegador a recarregar a animação ao remover a classe
+            }
+            central_img.style.display="none";
+            content.classList.add('popup');
+            
             }, 2000)
         }
     }else{
