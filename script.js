@@ -219,7 +219,7 @@ const sortearPergunta = () => {
 let centralSvg = document.getElementById('central-svg')
 
 const exibirPergunta = () => {
-
+    closeModal()
     if (content.classList.contains('popup')) {
         content.classList.remove('popup');
         void content.offsetWidth; // Isso força o navegador a recarregar a animação ao remover a classe
@@ -241,8 +241,6 @@ const exibirPergunta = () => {
         centralSvg.setAttribute('src', './images/town-svg.svg')
     }
 
-    console.log(svgName)
-    
     quest.classList.remove('float');
     quest.innerHTML= `<h3 class="pergunta">`+pergunta.enunciado+`</h3>`
     const respostas = [pergunta.re1,
@@ -283,7 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
     quest.classList.toggle('display-start')
     ranking_container.style.display='flex';
     let newRanking = ranking[0].split(',');
-    console.log(newRanking)
 
     if(newRanking.lenght != 0){
         newRanking.forEach(element => {
@@ -292,18 +289,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
+let modal = document.getElementById('modal')
+
+const openModal = (text) => {
+    let modalTitle = document.getElementById('modal-title');
+    modalTitle.innerHTML=text;
+    modal.classList.add('popup')
+    modal.style.display='block';
+}
+
+
+const closeModal = () => {
+    modal.classList.remove('popup')
+    modal.style.display = "none";
+};
+
+
 
 const checkAnswer = (p) => {
     let correct = resp.indexOf(pergunta.rc)
     if(p == correct){
-        window.alert('Parabéns! Você acertou!')
+        // window.alert('Parabéns! Você acertou!')
+        openModal('Parabens! Certa resposta!')
         contador_perguntas++
         ans.innerHTML=''
         if(contador_perguntas <= 10){
-        exibirPergunta()
+            setTimeout( () => {
+                exibirPergunta()
+            }, 3000)
+            clearTimeout()
         }else{
             svg_container.classList.remove('show');
-            window.alert('Parabéns! Você concluiu o Quiz!');
+            openModal('Parabéns! Você concluiu o Quiz!');
 
             content.innerHTML=`
             <div class="center">
@@ -314,7 +331,7 @@ const checkAnswer = (p) => {
             `
         }
     }else{
-        window.alert('Que pena! Você errou!')
+        openModal('Que pena! Você errou!')
         tiravida()
         chp--
         if(chp == 0){
@@ -332,7 +349,6 @@ const saveUser = () => {
     let nome = document.querySelector('.nome').value
     if(nome != ''){
     ranking.push(nome);
-    console.log(nome)
     localStorage.setItem('ranking-names', ranking)
     setInterval(function(){
         reset()
