@@ -21,21 +21,6 @@ body {
     overflow: hidden;
 }
 
-@keyframes popup {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    50%{
-        opacity: 0.5;
-        transform: scale(0.7);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
 @keyframes popBounceOut {
 	0%,
 	60%,
@@ -80,6 +65,9 @@ body {
 @media only screen and (max-width: 540px){
     .content{
         width: 95vw;
+    }
+    .svg-container img{
+        width: 150px !important;
     }
 }
 
@@ -148,11 +136,7 @@ body {
 .svg-container img{
     width: 200px;
 }
-@media only screen and (max-width:640px){
-    .svg-container img{
-        width: 150px !important;
-    }
-}
+
 .svg-container{
     width: 90%;
     display: none;
@@ -198,6 +182,7 @@ footer{
     text-align: center;
     color: #fff;
 }
+
 @keyframes left_appear {
     0% {
         opacity: 0;
@@ -401,7 +386,6 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     height: 350px;
     width: 60%;
     box-shadow: 0px 0px 50px rgba(0,0,0,0.7);
