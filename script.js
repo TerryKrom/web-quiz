@@ -169,7 +169,7 @@ const perguntas_imagens = {
     5: './images/civil-engineering.png',
 }
 
-let contador_perguntas = 10;
+let contador_perguntas = 9;
 
 let pergunta;
 
@@ -305,11 +305,10 @@ const closeModal = () => {
 };
 
 
-
 const checkAnswer = (p) => {
-    let correct = resp.indexOf(pergunta.rc)
+    let correct = resp.indexOf(pergunta.rc);
+
     if(p == correct){
-        // window.alert('Parabéns! Você acertou!')
         openModal('Parabens! Certa resposta!')
         contador_perguntas++
         ans.innerHTML=''
@@ -317,48 +316,51 @@ const checkAnswer = (p) => {
             setTimeout( () => {
                 exibirPergunta()
             }, 3000)
-            clearTimeout()
         }else{
             svg_container.classList.remove('show');
             content.innerHTML='';
-            
             openModal('Parabéns! Você concluiu o Quiz!');
-            
             setTimeout(() => {
                 closeModal()
                 content.innerHTML=`
-            <div class="center">
-                <h2 class="title-name">Registre seu nome:</h2>
-                <input type="text" required class="nome" placeholder="Digite seu nome:" maxlength="10">
-                <button class="start" onclick="saveUser()">Enviar</button>
-            </div>
-            `
-            if (content.classList.contains('popup')) {
-                content.classList.remove('popup');
-                void content.offsetWidth; // Isso força o navegador a recarregar a animação ao remover a classe
-            }
-            central_img.style.display="none";
-            content.classList.add('popup');
-            
+                    <div class="center">
+                        <h2 class="title-name">Registre seu nome:</h2>
+                        <input type="text" required class="nome" placeholder="Digite seu nome:" maxlength="10">
+                        <button class="start" onclick="saveUser()">Enviar</button>
+                    </div>
+                `
+                if (content.classList.contains('popup')) {
+                    content.classList.remove('popup');
+                    void content.offsetWidth; // This forces the browser to reload the animation by removing the class
+                }
+                central_img.style.display="none";
+                content.classList.add('popup');
             }, 2000)
         }
-    }else{
-        openModal('Que pena! Você errou!')
-        setTimeout(() => {
-            closeModal()
-        }, 3000)
-        clearTimeout();
+    } else {
+        // Check if the answer is already disabled
+        let wrongAnswer = ans.querySelector(`li:nth-child(${p+1})`);
+        if (!wrongAnswer.classList.contains('disabled')) {
+            openModal('Que pena! Você errou!');
+            setTimeout(() => {
+                closeModal()
+            }, 3000);
 
-        remove_hp()
+            // Add the 'disabled' class to the wrong answer to prevent further clicks
+            wrongAnswer.classList.add('disabled');
 
-        contador_hp--
+            remove_hp();
 
-        if(contador_hp == 0){
-            closeModal();
-            gameover()
+            contador_hp--
+
+            if (contador_hp == 0) {
+                closeModal();
+                gameover()
+            }
         }
     }
 }
+
 
 
 const reset = () => {

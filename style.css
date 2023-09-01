@@ -404,3 +404,12 @@ footer{
     color: #eee;
     font-weight: 400;
 }
+
+.disabled{
+    cursor:not-allowed;
+    background-color: #eeeeee88;
+}
+
+.disable:hover{
+    background-color: #eeeeee88;
+}
