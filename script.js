@@ -332,6 +332,10 @@ const checkAnswer = (p) => {
         }
     }else{
         openModal('Que pena! Você errou!')
+        setTimeout(() => {
+            closeModal()
+        }, 3000)
+        clearTimeout();
         tiravida()
         chp--
         if(chp == 0){
