@@ -14,8 +14,8 @@
 }
 
 body {
-    /* background: url('./images/AnimatedShape.svg'); */
-    background-color: var(--pastel-color3);
+    background: url('./images/AnimatedShape.svg');
+    /* background-color: var(--pastel-color3); */
     background-position: center center;
     background-size: cover;
     overflow: hidden;
