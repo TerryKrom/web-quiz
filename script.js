@@ -309,7 +309,7 @@ const checkAnswer = (p) => {
     let correct = resp.indexOf(pergunta.rc);
 
     if(p == correct){
-        openModal('Parabens! Certa resposta!')
+        openModal('Parabéns! Certa resposta!')
         contador_perguntas++
         ans.innerHTML=''
         if(contador_perguntas <= 10){
