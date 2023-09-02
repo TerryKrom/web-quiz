@@ -191,10 +191,14 @@ let hp = document.getElementById('hp')
 let header_title = document.getElementById('header-title')
 let ranking_div = document.querySelector('.ranking')
 let ranking_container = document.querySelector('.ranking-names');
-let savedNames = localStorage.getItem('ranking-names') || [];
+
+let savedNames = [localStorage.getItem('ranking-names')] || [];
+let savedTimes = [localStorage.getItem('ranking-times')] || [];
+
 let central_img = document.querySelector(".central-img")
 
 let ranking = [];
+let timesRanking = [];
 
 let svg_container = document.querySelector('.svg-container');
 let resp = [];
@@ -202,6 +206,8 @@ let resp = [];
 let perguntasNaoSorteadas = [...perguntas]; // Cria uma cópia das perguntas originais
 let perguntasSorteadas = []; // Array para armazenar as perguntas já sorteadas
 
+let startTime;
+let endTime;
 
 
 const sortearPergunta = () => {
@@ -217,6 +223,7 @@ const sortearPergunta = () => {
 }
 
 let centralSvg = document.getElementById('central-svg')
+
 
 const exibirPergunta = () => {
     closeModal()
@@ -246,7 +253,8 @@ const exibirPergunta = () => {
     const respostas = [pergunta.re1,
     pergunta.re2,
     pergunta.re3,
-    pergunta.rc]
+    pergunta.rc];
+    
     respostas.sort();
 
     respostas.forEach((resposta, index) => {
@@ -257,37 +265,21 @@ const exibirPergunta = () => {
     title.style.display="block"
     title.innerHTML=`Questão: `+contador_perguntas+``
     resp = respostas;
+
+    startTime = Date.now();
 }
 
-const createName = (name) => {
+const createRankingName = (nome, tempo) => {
     let div_name = document.createElement('div');
-    div_name.classList.add('ranking-name')
-    div_name.textContent = name;
-    ranking_container.appendChild(div_name)
+    div_name.classList.add('ranking-name');
+    let span_name = document.createElement('span')
+    let span_time = document.createElement('span')
+    span_name.textContent = `${nome}`;
+    span_time.textContent = `Tempo: ${tempo} segundos`
+    div_name.appendChild(span_name)
+    div_name.appendChild(span_time)
+    ranking_container.appendChild(div_name);
 }
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    central_img.style.display="block";
-    ranking = localStorage.getItem('ranking-names') ? localStorage.getItem('ranking-names').split(',') : [];
-
-    quest.innerHTML=`<button class="start" onclick="exibirPergunta()">Play</button>`
-
-    setInterval(function(){
-        quest.style.animation=''
-        quest.classList.add('float')
-    }, 1000)
-    quest.classList.toggle('display-start')
-    ranking_container.style.display='flex';
-    let newRanking = ranking[0].split(',');
-
-    if(newRanking.lenght != 0){
-        newRanking.forEach(element => {
-            createName(element)
-        })
-    }
-})
 
 let modal = document.getElementById('modal')
 
@@ -317,25 +309,7 @@ const checkAnswer = (p) => {
                 exibirPergunta()
             }, 3000)
         }else{
-            svg_container.classList.remove('show');
-            content.innerHTML='';
-            openModal('Parabéns! Você concluiu o Quiz!');
-            setTimeout(() => {
-                closeModal()
-                content.innerHTML=`
-                    <div class="center">
-                        <h2 class="title-name">Registre seu nome:</h2>
-                        <input type="text" required class="nome" placeholder="Digite seu nome:" maxlength="10">
-                        <button class="start" onclick="saveUser()">Enviar</button>
-                    </div>
-                `
-                if (content.classList.contains('popup')) {
-                    content.classList.remove('popup');
-                    void content.offsetWidth; // This forces the browser to reload the animation by removing the class
-                }
-                central_img.style.display="none";
-                content.classList.add('popup');
-            }, 2000)
+            gameFinished()
         }
     } else {
         // Check if the answer is already disabled
@@ -355,13 +329,11 @@ const checkAnswer = (p) => {
 
             if (contador_hp == 0) {
                 closeModal();
-                gameover()
+                gameOver()
             }
         }
     }
 }
-
-
 
 const reset = () => {
     window.location.reload()
@@ -370,22 +342,57 @@ const reset = () => {
 const saveUser = () => {
     let nome = document.querySelector('.nome').value
     if(nome != ''){
-    ranking.push(nome);
-    localStorage.setItem('ranking-names', ranking)
-    setInterval(function(){
-        reset()
-    }, 1000)
+        ranking.push(nome);
+        
+        localStorage.setItem('ranking-names', ranking)
+        
+        // Calcule o tempo gasto nas perguntas
+        const tempoGasto = (endTime - startTime) / 1000; // Converta para segundos
+
+        timesRanking.push(tempoGasto);
+        
+        localStorage.setItem('ranking-times', timesRanking);
+
+        setInterval(function(){
+            reset()
+        }, 1000)
     }else{
-        alert('Insira um nome valido!')
+        openModal('Insira um nome valido!')
     }
 }
 
-const gameover = () => {
+const gameOver = () => {
     perguntasSorteadas = [];
     hp.style.display="none"
     content.innerHTML=`
     <h2 class="gameover" align="center">GAME OVER</h2>
     <button class="start" onclick="reset()">Reiniciar</button>`
+}
+
+const gameFinished = () => {
+    svg_container.classList.remove('show');
+    content.innerHTML = '';
+    openModal('Parabéns! Você concluiu o Quiz!');
+    endTime = Date.now();
+    setTimeout(() => {
+        closeModal();
+        content.innerHTML = `
+            <div class="center">
+                <h2 class="title-name">Registre seu nome:</h2>
+                <h2 class="title-name">Seu tempo: ${(endTime-startTime)/1000}</h2>
+                <input type="text" required class="nome" placeholder="Digite seu nome:" maxlength="10">
+                <button class="start" onclick="saveUser()">Enviar</button>
+            </div>
+        `;
+
+        if (content.classList.contains('popup')) {
+            content.classList.remove('popup');
+            void content.offsetWidth; // Isso força o navegador a recarregar a animação ao remover a classe
+        }
+        central_img.style.display = "none";
+        content.classList.add('popup');
+
+        }, 2000);
 }
 
 let vida = [l1,l2,l3]
@@ -399,5 +406,36 @@ let btn_clear = document.querySelector('.clear');
 btn_clear.addEventListener('click', () => {
     ranking = [];
     localStorage.setItem('ranking-names', '')
+    localStorage.setItem('ranking-times', '')
     ranking_container.innerHTML='';
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+    central_img.style.display = "block";
+
+    quest.innerHTML = `<button class="start" onclick="exibirPergunta()">Play</button>`;
+
+    setInterval(function () {
+        quest.style.animation = ''
+        quest.classList.add('float')
+    }, 1000)
+
+    quest.classList.toggle('display-start')
+    ranking_container.style.display = 'flex';
+
+    ranking = savedNames[0].split(',')
+    timesRanking = savedTimes[0].split(',')
+
+    timesRanking.sort((a, b) => a-b);
+
+    if(localStorage.getItem('ranking-names') && localStorage.getItem('ranking-names')){
+        if (ranking.length != 0 && timesRanking.length != 0) {
+            for (let i = 1; i < ranking.length; i++) {
+                const nome = ranking[i];
+                const tempo = timesRanking[i];
+                createRankingName(nome, tempo);
+            }
+        }    
+    }
+})
+
