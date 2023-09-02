@@ -358,6 +358,10 @@ const saveUser = () => {
         }, 1000)
     }else{
         openModal('Insira um nome valido!')
+        setTimeout(() => {
+            closeModal()
+        }, 1500)
+        clearTimeout();
     }
 }
 
