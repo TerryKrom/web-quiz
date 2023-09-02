@@ -384,14 +384,14 @@ const gameFinished = () => {
                 <button class="start" onclick="saveUser()">Enviar</button>
             </div>
         `;
-        
-document.querySelector('.nome').addEventListener('keydown', function (event) {
-    // Verifique se a tecla pressionada é a tecla "Enter" (código 13)
-    if (event.key === 'Enter') {
-        // Chame a função saveUser
-        saveUser();
-    }
-});
+                
+        document.querySelector('.nome').addEventListener('keydown', function (event) {
+            // Verifique se a tecla pressionada é a tecla "Enter" (código 13)
+            if (event.key === 'Enter') {
+                // Chame a função saveUser
+                saveUser();
+            }
+        });
 
 
         if (content.classList.contains('popup')) {
