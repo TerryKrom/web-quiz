@@ -340,7 +340,8 @@ const reset = () => {
 }
 
 const saveUser = () => {
-    let nome = document.querySelector('.nome').value
+    let nome = document.querySelector('.nome').value;
+    nome.trim();
     if(nome != ''){
         ranking.push(nome);
         
