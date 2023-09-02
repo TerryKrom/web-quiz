@@ -11,6 +11,7 @@
     --pastel-color: #6891ea;
     --pastel-color2: #7568ea;
     --pastel-color3: #5168ee;
+    --font-color: #eee;
 }
 
 body {
@@ -128,7 +129,7 @@ body {
 
 #header-title{
     font-size: 1.8rem;
-    color: #eee;
+    color: var(--font-color);
 }
 
 .svg-container img{
@@ -178,7 +179,7 @@ body {
 
 footer{
     text-align: center;
-    color: #fff;
+    color: var(--font-color);
 }
 
 @keyframes left_appear {
@@ -207,7 +208,7 @@ footer{
     height: 100%;
     color: var(--pastel-color3);
     font-weight: 500;
-    background-color: #eee;
+    background-color: var(--font-color);
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -239,7 +240,7 @@ footer{
     max-width: 20rem;
     height: 50px;
     color: var(--pastel-color3);
-    background-color: #eee;
+    background-color: var(--font-color);
     transition: 0.2s ease-in-out;
     border-radius: 15px;
     font-size: 1.1rem;
@@ -290,12 +291,12 @@ footer{
     font-size: 1.5rem;
     display: flex;
     justify-content: space-between;
-    color: #eee;
+    color: var(--font-color);
 }
 
 .heading-text button{
     color: var(--pastel-color3);
-    background-color: #eee;
+    background-color: var(--font-color);
     width: 5rem;
     border-radius: 5px;
     border: none;
@@ -309,7 +310,7 @@ footer{
 
 .line{
     width: 100%;
-    background-color: #eee;
+    background-color: var(--font-color);
     height: 3px;
     border-radius: 15px;
     margin-top: 3px;
@@ -344,7 +345,7 @@ footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #eee;
+    background-color: var(--font-color);
     text-indent: 10px;
     margin: 3px;
     border-radius: 5px;
@@ -359,13 +360,13 @@ footer{
 
 
 .quest, #title, .pergunta{
-    color: #eee;
+    color: var(--font-color);
     font-weight: 300 !important;
 }
 
 .title-name, .title, .gameover{
     font-weight: 400;
-    color: #eee;
+    color: var(--font-color);
 }
 
 
@@ -397,7 +398,7 @@ footer{
 #modal-title{
     margin: 20px;
     text-transform: capitalize;
-    color: #eee;
+    color: var(--font-color);
     font-weight: 300;
     text-align: center;
 }
