@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap');
 
 *{
     box-sizing: border-box;
@@ -106,6 +106,7 @@ body {
 .pergunta{
     width: 25rem;
 }
+
 .nome{
     width: 20rem;
     height: 2.9rem;
@@ -116,10 +117,7 @@ body {
     font-size: 1.1rem;
     color: var(--pastel-color3);
 }
-.title-name{
-    font-weight: 400;
-    color: #eee;
-}
+
 .quest.float{
     animation: float 2s linear infinite;
 }
@@ -267,9 +265,6 @@ footer{
     font-size: 1.3rem;
 }
 
-.title{
-    font-weight: 300;
-}
 .pergunta{
     width: 100%;
 }
@@ -283,6 +278,7 @@ footer{
     align-items: center;
     border-radius: 10px;
 }
+
 .ranking{
     width: 100%;
     height: 300px;
@@ -367,6 +363,12 @@ footer{
     font-weight: 300 !important;
 }
 
+.title-name, .title, .gameover{
+    font-weight: 400;
+    color: #eee;
+}
+
+
 .modal{
     display: none;
     position: fixed;
@@ -398,11 +400,6 @@ footer{
     color: #eee;
     font-weight: 300;
     text-align: center;
-}
-
-.gameover{
-    color: #eee;
-    font-weight: 400;
 }
 
 .disabled{
