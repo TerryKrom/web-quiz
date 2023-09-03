@@ -73,6 +73,18 @@ body {
     }
 }
 
+@media only screen and (max-width: 450px){
+    .center{
+        width: 100% !important;
+        height: 100% !important;
+    }
+    .btn-r{
+        text-indent: 5px !important;
+        width: 105% !important;
+        font-size: 0.9rem;
+    }
+}
+
 .content.popup, .modal.popup{
     animation: popBounceOut 0.8s linear forwards; /* Aplica a animação */
     animation-delay: 0s;
