@@ -281,7 +281,7 @@ const createRankingName = (nome, tempo) => {
     let span_name = document.createElement('span')
     let span_time = document.createElement('span')
     span_name.textContent = `${nome}`;
-    span_time.textContent = `Tempo: ${tempo} segundos`
+    span_time.textContent = `Tempo: ${tempo}`
     div_name.appendChild(span_name)
     div_name.appendChild(span_time)
     ranking_container.appendChild(div_name);
@@ -318,7 +318,7 @@ const checkAnswer = (p) => {
             gameFinished()
         }
     } else {
-        // Check if the answer is already disabled
+        
         let wrongAnswer = ans.querySelector(`li:nth-child(${p+1})`);
         if (!wrongAnswer.classList.contains('disabled')) {
             openModal('Que pena! Você errou!');
@@ -326,7 +326,6 @@ const checkAnswer = (p) => {
                 closeModal()
             }, 3000);
 
-            // Add the 'disabled' class to the wrong answer to prevent further clicks
             wrongAnswer.classList.add('disabled');
 
             remove_hp();
@@ -446,16 +445,17 @@ document.addEventListener('DOMContentLoaded', () => {
     ranking = savedNames[0].split(',')
     timesRanking = savedTimes[0].split(',')
 
-    timesRanking.sort((a, b) => a-b);
+    let rankingData = ranking.map((nome, index) => ({ nome, tempo: timesRanking[index] }));
 
-    if(localStorage.getItem('ranking-names') && localStorage.getItem('ranking-names')){
-        if (ranking.length != 0 && timesRanking.length != 0) {
-            for (let i = 1; i < ranking.length; i++) {
-                const nome = ranking[i];
-                const tempo = timesRanking[i];
-                createRankingName(nome, tempo);
-            }
-        }    
+    rankingData.sort((a, b) => parseFloat(a.tempo) - parseFloat(b.tempo));
+    console.log(ranking)
+    if (localStorage.getItem('ranking-names') && localStorage.getItem('ranking-names')) {
+    if (rankingData.length !== 0) {
+        for (let i = 1; i < rankingData.length; i++) {
+        const { nome, tempo } = rankingData[i];
+        createRankingName(nome, tempo);
+        }
     }
+}
 })
 
