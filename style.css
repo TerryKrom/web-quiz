@@ -78,6 +78,11 @@ body {
         width: 100% !important;
         height: 100% !important;
     }
+    .pergunta{
+        width: 92.5% !important;
+        max-width: 95% !important;
+        margin: 0px auto;
+    }
     .btn-r{
         text-indent: 5px !important;
         width: 105% !important;
