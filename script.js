@@ -224,6 +224,9 @@ const sortearPergunta = () => {
 
 let centralSvg = document.getElementById('central-svg')
 
+const sortAnswers = () => {
+    return (Math.round(Math.random())-0.5)
+}
 
 const exibirPergunta = () => {
     closeModal()
@@ -255,7 +258,7 @@ const exibirPergunta = () => {
     pergunta.re3,
     pergunta.rc];
     
-    respostas.sort();
+    respostas.sort(sortAnswers);
 
     respostas.forEach((resposta, index) => {
         ans.innerHTML += `<li class="btn-r" onclick="checkAnswer(${index})">${resposta}</li>`;
@@ -266,7 +269,10 @@ const exibirPergunta = () => {
     title.innerHTML=`Questão: `+contador_perguntas+``
     resp = respostas;
 
-    startTime = Date.now();
+    if(contador_perguntas == 1){
+        startTime = Date.now();
+        console.log(startTime);
+    }
 }
 
 const createRankingName = (nome, tempo) => {
