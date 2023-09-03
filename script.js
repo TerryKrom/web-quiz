@@ -111,14 +111,14 @@ const perguntas = [
         re3: "Concentração de atividades urbanas",
         rc: "Poluição do ar e esgotamento dos recursos",
     },
-    // {
-    //     id: 15,
-    //     enunciado: "O que é um plano diretor urbano?",
-    //     re1: "Um projeto para expandir atividades agrícolas",
-    //     re2: "Fusão de áreas urbanas vizinhas",
-    //     re3: "Sistema de transporte que atende a população",
-    //     rc: "Regras para o desenvolvimento e organização de cidades",
-    // },
+    {
+        id: 15,
+        enunciado: "O que é um plano diretor urbano?",
+        re1: "Um projeto para expandir atividades agrícolas",
+        re2: "Fusão de áreas urbanas vizinhas",
+        re3: "Sistema de transporte que atende a população",
+        rc: "Regras para o desenvolvimento e organização de cidades",
+    },
     {
         id: 16,
         enunciado: "O que é a rede de transporte público?",

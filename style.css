@@ -64,7 +64,7 @@ body {
     flex-direction: column;
 }
 
-@media only screen and (max-width: 540px){
+@media only screen and (max-width: 550px){
     .content{
         width: 95vw;
     }
@@ -73,7 +73,7 @@ body {
     }
 }
 
-@media only screen and (max-width: 450px){
+@media only screen and (max-width: 500px){
     .center{
         width: 100% !important;
         height: 100% !important;
