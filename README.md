@@ -1,4 +1,5 @@
 <h2>Web-quiz</h2>
+
 > A web game quiz, made for a school project!
 
 > Using only HTML, CSS and JS, without frameworks.
