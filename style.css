@@ -89,6 +89,15 @@ body {
     }
 }
 
+@media only screen and (max-height: 590px){
+    .central-img{
+        display: none !important;    
+    }
+    .start{
+        margin-top: 20px !important;
+    }
+}
+
 .content.popup, .modal.popup{
     animation: popBounceOut 0.8s linear forwards; /* Aplica a animação */
     animation-delay: 0s;
