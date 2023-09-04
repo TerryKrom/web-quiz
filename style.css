@@ -76,7 +76,6 @@ body {
 @media only screen and (max-width: 500px){
     .center{
         width: 100% !important;
-        height: 100% !important;
     }
     .pergunta{
         width: 92.5% !important;
