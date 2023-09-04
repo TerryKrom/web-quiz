@@ -245,6 +245,7 @@ const perguntas_imagens = {
     3: './images/skyscraper.png',
     4: './images/buildings.png',
     5: './images/civil-engineering.png',
+    6: './images/skyscraper.png',
     9: './images/infrastructure.png',
     17: './images/hands.png',
     21: './images/hands.png',
