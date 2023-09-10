@@ -539,7 +539,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(ranking)
     if (localStorage.getItem('ranking-names') && localStorage.getItem('ranking-names')) {
     if (rankingData.length !== 0) {
-        for (let i = 1; i < rankingData.length; i++) {
+        for (let i = 0; i < rankingData.length; i++) {
         const { nome, tempo } = rankingData[i];
         createRankingName(nome, tempo);
         }
