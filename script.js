@@ -364,15 +364,17 @@ const exibirPergunta = () => {
 }
 
 const createRankingName = (nome, tempo) => {
-    let div_name = document.createElement('div');
-    div_name.classList.add('ranking-name');
-    let span_name = document.createElement('span')
-    let span_time = document.createElement('span')
-    span_name.textContent = `${nome}`;
-    span_time.textContent = `Tempo: ${tempo}`
-    div_name.appendChild(span_name)
-    div_name.appendChild(span_time)
-    ranking_container.appendChild(div_name);
+    if(nome !== '' && tempo !== ''){
+        let div_name = document.createElement('div');
+        div_name.classList.add('ranking-name');
+        let span_name = document.createElement('span')
+        let span_time = document.createElement('span')
+        span_name.textContent = `${nome}`;
+        span_time.textContent = `Tempo: ${tempo}`
+        div_name.appendChild(span_name)
+        div_name.appendChild(span_time)
+        ranking_container.appendChild(div_name);
+    }
 }
 
 let modal = document.getElementById('modal')
@@ -512,8 +514,9 @@ let btn_clear = document.querySelector('.clear');
 
 btn_clear.addEventListener('click', () => {
     ranking = [];
-    localStorage.setItem('ranking-names', '')
-    localStorage.setItem('ranking-times', '')
+    localStorage.setItem('ranking-names', ' ');
+    localStorage.setItem('ranking-times', ' ');
+    timesRanking = [];
     ranking_container.innerHTML='';
 })
 
@@ -532,14 +535,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ranking = savedNames[0].split(',')
     timesRanking = savedTimes[0].split(',')
-
+    console.log(timesRanking)
     let rankingData = ranking.map((nome, index) => ({ nome, tempo: timesRanking[index] }));
 
     rankingData.sort((a, b) => parseFloat(a.tempo) - parseFloat(b.tempo));
     console.log(ranking)
-    if (localStorage.getItem('ranking-names') && localStorage.getItem('ranking-names')) {
+    console.log(rankingData)
+    if (localStorage.getItem('ranking-names') && localStorage.getItem('ranking-times')) {
     if (rankingData.length !== 0) {
-        for (let i = 1; i < rankingData.length; i++) {
+        for (let i = 0; i < rankingData.length; i++) {
         const { nome, tempo } = rankingData[i];
         createRankingName(nome, tempo);
         }
